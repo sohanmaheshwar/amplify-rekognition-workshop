@@ -1,10 +1,5 @@
-# amplify-rekognition-workshop
-A simple Getting Started with AWS Amplify and Rekognition workshop 
 
-
-  
-
-# Getting started with AWS Amplify, S3 and Rekognition
+ # Getting started with AWS Amplify, S3 and Rekognition
 
   
 
