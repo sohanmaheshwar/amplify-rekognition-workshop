@@ -542,8 +542,10 @@ hr { height: 1px; background: lightgray; border: none; }
 
 Upon choosing a file from your local system, `app.js` will upload the image to a S3 bucket. Remember we have already configured our Amplify project to work with S3, so you don't have to worry about specifying the bucket name and region. We extract the bucket name from the `aws-exports.js` file. 
 
-~~~
-<Add app.js code here>
-~~~
+Add the code from app.js and index.html in this repo to your code.
+
+## Part 3 - Testing your code
+
+run `npm start` in your console and your page should open up at http://localhost:8080. Upload an image from your local machine and see what labels are returned. You can play around with the values of `MaxLabels` and `MinConfidence` in app.js based on your requirement. 
 
 
