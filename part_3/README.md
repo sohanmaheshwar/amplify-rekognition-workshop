@@ -16,7 +16,9 @@ We will use the AWS SDK which includes the Rekognition libraries.
 
 In your terminal enter `npm install aws-sdk`
 
-2. #### In your `app.js` add the following line of code:
+2. #### Adding Rekognition to the project
+
+In your `app.js` add the following line of code:
 
 ``` javascript
 const AWS = require('aws-sdk');
@@ -41,7 +43,9 @@ A security best practice is [Granting Least Privilege](https://docs.aws.amazon.c
 * Click on that role and then 'Attach Policies'
 * Look for `AmazonRekognitionFullAccess` and attach it. This essentially gives the Identity pool created by Cognito the permission to access Rekognition.
 
-4. #### Let's write a function to call the Rekognition API 
+4. #### Using Rekognition to detect labels
+
+Let's write a function to call Rekognition 
 
 ```javascript
 function identify (filename) {
@@ -80,7 +84,9 @@ We create a new Image object with the filename. We also define the maximum numbe
 
 Using the `.detectLabels` function, we point to the just-uploaded image. The results are pushed into the `labelArray` and the `myDiv` is updated with all the labels. 
 
-4. #### Modify your `Storage.put` function to call the `identify` function we just wrote. This is what it would look like:
+4. #### Tying it all together
+
+Modify your `Storage.put` function to call the `identify` function we just wrote. This is what it would look like:
 
 ```javascript
 Storage.put(this.files[0].name, this.files[0])
