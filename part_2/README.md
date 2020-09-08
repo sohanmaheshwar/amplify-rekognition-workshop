@@ -114,6 +114,8 @@ fileTag.addEventListener("change", function() {
     }).catch(err => console.log(err));
 });
 ```
+Run `npm start` in your terminal to start the webpage
+
 You might wonder why Cognito is required even if the app works with unauthenticated users? This is by design. Earlier we specified that Cognito would enable access to authenticated and guest users. The details of the S3 bucket adding earlier as well as the Cognito credentials are stored in your `./aws-exports` file which we have imported. 
 
 We have added an event listener to detect when a file is uploaded. Once the file is selected `Storage.put` will upload the image to the S3 bucket. Add the code from `app.js` and `index.html` in this repo to your code. Try uploading an image and if its successful you will see a 'Uploaded {imageName}' message on the webpage. Go to your S3 bucket in your AWS console to verify if the file has been uploaded. If there's an error, right click in your browser and click on `Inspect Element` to check what the error is. 

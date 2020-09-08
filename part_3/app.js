@@ -55,7 +55,6 @@ function identify (filename) {
         })
 
         console.log(labelArray);
-        //ReactDOM.render(labelArray, document.getElementById('root'));
         var myDiv = document.getElementById("Labels");
         myDiv.innerHTML = labelArray;
         return resolve(data.Labels);
