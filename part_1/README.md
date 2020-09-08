@@ -1,45 +1,86 @@
-Part I - Getting Started with AWS Amplify
+## Part I - Getting Started with AWS Amplify
+
+  
+
+  
 
 The open-source Amplify Framework provides the following products to build fullstack iOS, Android, Flutter, Web, and React Native apps:
 
-Amplify CLI - Configure all the services needed to power your backend through a simple command line interface.
+  
+  
 
-Amplify Libraries - Use case-centric client libraries to integrate your app code with a backend using declarative interfaces.
+**Amplify CLI** - Configure all the services needed to power your backend through a simple command line interface.
 
-Amplify UI Components - UI libraries for React, React Native, Angular, Ionic and Vue.
-Pre Requisites:
+  
 
-    AWS Account
+**Amplify Libraries** - Use case-centric client libraries to integrate your app code with a backend using declarative interfaces.
 
-    Node.js v10.x or later
+  
 
-    npm v5.x or later
+**Amplify UI Components** - UI libraries for React, React Native, Angular, Ionic and Vue.
 
-    git v2.14.1 or later
+  
 
-    Lets get started by installing Amplify
+### Pre Requisites:
 
+  
+  
+
+* AWS Account
+
+* Node.js v10.x or later
+
+* npm v5.x or later
+
+* git v2.14.1 or later
+
+  
+
+1. Lets get started by installing Amplify
+
+~~~
 
 npm install -g @aws-amplify/cli
 
-    Configure Amplify
+~~~
 
+2. Configure Amplify
+
+~~~
 
 amplify configure
 
-This command will ask you to create a new user in IAM. Follow the steps to create a new IAM user with the necessary permissions. Once the user is created, the Amplify CLI will ask you to provide the accessKeyId and the secretAccessKey to connect Amplify CLI with your newly created IAM user. Once you do this you have setup Amplify
+~~~
 
-    Lets setup our simple project
+This command will ask you to create a new user in IAM. Follow the steps to create a new IAM user with the necessary permissions. Once the user is created, the Amplify CLI will ask you to provide the `accessKeyId` and the `secretAccessKey` to connect Amplify CLI with your newly created IAM user. Once you do this you have setup Amplify
 
-Create a new JavaScript app
+  
 
-Create a new ‘plain’ JavaScript ES2015 app with webpack. With the following commands, create the directory (amplify-js-app) and files for the app.
+3. Lets setup our simple project
+
+## Create a new JavaScript app
+
+  
+
+Create a new ‘plain’ JavaScript [ES2015](https://babeljs.io/docs/en/learn/) app with webpack. With the following commands, create the directory (`amplify-js-app`) and files for the app.
+
+  
+
+```bash
 
 mkdir -p amplify-js-app/src && cd amplify-js-app
 
 touch package.json index.html webpack.config.js src/app.js
 
+```
+
+  
+
 The app directory structure should be:
+
+  
+
+```console
 
 amplify-js-app
 
@@ -53,7 +94,15 @@ amplify-js-app
 
 └── webpack.config.js
 
-Add the following to the package.json file:
+```
+
+  
+
+Add the following to the `package.json` file:
+
+  
+
+```json
 
 {
 
@@ -91,31 +140,43 @@ Add the following to the package.json file:
 
 }
 
-Install local development dependencies
+```
+
+  
+
+### Install local development dependencies
+
+  
+
+```bash
 
 npm install
 
-Add the following to the index.html file:
+```
 
+Add the following to the `index.html` file:
+
+~~~
 
 <html>
-
-<head>
-
-<title> Label Detector </title>
-
-</head>
-
-<body>
-
-<h1> This is a Label Detector </h1>
-
-</body>
-
+   <head>
+      <title> Label Detector </title>
+   </head>
+   <body>
+      <h1> This is a Label Detector </h1>
+   </body>
 </html>
 
-Add the following to the webpack.config.js file:
 
+~~~
+
+  
+
+Add the following to the `webpack.config.js` file:
+
+  
+
+~~~
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -123,70 +184,99 @@ const webpack = require('webpack');
 
 const path = require('path');
 
-  
+
 
 module.exports = {
 
-mode: 'development',
+    mode: 'development',
 
-entry: './src/app.js',
+    entry: './src/app.js',
 
-output: {
+    output: {
 
-filename: '[name].bundle.js',
+        filename: '[name].bundle.js',
 
-path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist')
 
-},
+    },
 
-module: {
+    module: {
 
-rules: [
+        rules: [
 
-{
+            {
 
-test: /\.js$/,
+                test: /\.js$/,
 
-exclude: /node_modules/
+                exclude: /node_modules/
 
-}
+            }
 
-]
+        ]
 
-},
+    },
 
-devServer: {
+    devServer: {
 
-contentBase: './dist',
+        contentBase: './dist',
 
-overlay: true,
+        overlay: true,
 
-hot: true
+        hot: true
 
-},
+    },
 
-plugins: [
+    plugins: [
 
-new CopyWebpackPlugin(['index.html']),
+        new CopyWebpackPlugin(['index.html']),
 
-new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin()
 
-]
+    ]
 
 };
 
+~~~
+
+  
+
 Run the app:
+
+  
+
+```bash
 
 npm start
 
-Open a browser and navigate to http://localhost:8080
-Initialize a new backend
+```
+
+  
+
+Open a browser and navigate to [http://localhost:8080](http://localhost:8080)
+
+  
+
+## Initialize a new backend
+
+  
 
 Now that we have a running app, it’s time to set up Amplify so that we can create the necessary backend services needed to support the app. From the root of the project, run:
 
+  
+
+```bash
+
 amplify init
 
+```
+
+  
+
 When you initialize Amplify you’ll be prompted for some information about the app:
+
+  
+
+```console
 
 Enter a name for the project (amplifyjsapp)
 
@@ -236,4 +326,9 @@ Start command (npm run-script start)
 
 Do you want to use an AWS profile
 
+```
+
 And that's it. You have created a simple Javascript web app using AWS Amplify. In the next steps you will learn how to let a user upload a file to a S3 bucket and then use Rekognition to detect labels on it.
+
+  
+  
