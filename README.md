@@ -15,12 +15,9 @@
 
 #### Let's Start!
 
-* (Part I - Setup your web app with AWS Amplify)[https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_1]
-* (Part II - Upload an image to Amazon S3)[https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_2]
-* (Part III - Detect the labels in the uploaded image using Rekognition)[https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_3]
-
-  
-  
+* [Part I - Setup your web app with AWS Amplify](https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_1)
+* [Part II - Upload an image to Amazon S3](https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_2)
+* [Part III - Detect the labels in the uploaded image using Rekognition](https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_3)
 
 
 
