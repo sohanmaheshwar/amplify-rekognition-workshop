@@ -1,58 +1,66 @@
+
 ## Part 2 - Allow your users to upload images to a S3 bucket
+
+  
 
   
 
 AWS Amplify comes with built-in support for Amazon S3 and its really easy.
 
-To do so just run the following command:
+  
+
+1. To do so just run the following command:
+
+  
 
 ~~~
-
 amplify add storage
-
 ~~~
+
+  
 
 and select Content when provided with options:
 
+  
+
 ```console
-
 ? Please select from one of the below mentioned services (Use arrow keys)
-
 ❯ Content (Images, audio, video, etc.)
-
 NoSQL Database
+? You need to add auth (Amazon Cognito) to your project in order to add storage for user files. Do you want to add auth now? (Y)
+Using service: Cognito, provided by: awscloudformation
+ 
+ The current configured provider is Amazon Cognito. 
+ 
+Do you want to use the default authentication and security configuration? (Default configuration)
+How do you want users to be able to sign in? (Username)
+Do you want to configure advanced settings? (No, I am done)
+Successfully added auth resource
+? Please provide a friendly name for your resource that will be used to label this category in the project: (labeldetect)
+? Please provide bucket name: (imageStorage)
+? Who should have access: (Auth and guest users)
+? What kind of access do you want for Authenticated users? (create/update, read)
+? What kind of access do you want for Guest users? (create/update, read)
+? Do you want to add a Lambda Trigger for your S3 Bucket? (No)
 
-? You need to add auth (Amazon Cognito) to your project in order to add storage for user files. Do y
-
-ou want to add auth now? (Y/n)
-
+Successfully updated auth resource locally.
+Successfully added resource imageStorage locally
 ```
 
-You can choose to enable auth but for this workshop we will disable auth.
-
-  
-
-You can update your backend by running this command:
-
-  
-
+2. Now update your backend by running this command:
+ 
 ~~~
-
 amplify push
-
 ~~~
 
-  
-
-**To check if your backend added a S3 bucket check the `aws-exports.js` is copied under your source directory, e.g. ‘/src’ and see if there is a bucket name**
-
-  
-To give the users an option to upload a file using the browser we will use some simple JS and HTML. Edit your `index.html` file with the following code. 
-
-The code has some basic styling elements (not required) and a button to choose a local file. 
-~~~
+**To check if your backend added a S3 bucket check the `aws-exports.js` is copied under your source directory, e.g. ‘/src’ and see if there is a bucket name. You will also see credentials for Cognito**
 
 
+3. To give the users an option to upload a file using the browser we will use some simple JS and HTML. Edit your `index.html` file with the following code.
+
+  The code has some basic styling elements (not required) and a button to choose a local file.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -83,10 +91,31 @@ The code has some basic styling elements (not required) and a button to choose a
       <script src="main.bundle.js"></script>
    </body>
 </html>
+```
+4. We will now modify our `app.js` file to upload the selected image to a S3 bucket. In your `app.js` file, upload this code snippet:
 
+```javascript
+import Amplify, {Storage} from 'aws-amplify';
+import awsconfig from './aws-exports';
 
-~~~
+const bucket = awsconfig.aws_user_files_s3_bucket;
+const identity_pool_id = awsconfig.aws_cognito_identity_pool_id;
+const region = awsconfig.aws_project_region;
 
-Upon choosing a file from your local system, `app.js` will upload the image to a S3 bucket. Remember we have already configured our Amplify project to work with S3, so you don't have to worry about specifying the bucket name and region. We extract the bucket name from the `aws-exports.js` file. 
+Amplify.configure(awsconfig);
+AWS.config.update({region: region});
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: identity_pool_id});
 
-Add the code from app.js and index.html in this repo to your code.
+var fileTag = document.getElementById("myFile");
+fileTag.addEventListener("change", function() {
+    Storage.put(this.files[0].name, this.files[0]).then(result => {
+        var myDiv = document.getElementById("Labels");
+        myDiv.innerHTML = "Uploaded " + result.key;
+    }).catch(err => console.log(err));
+});
+```
+You might wonder why Cognito is required even if the app works with unauthenticated users? This is by design. Earlier we specified that Cognito would enable access to authenticated and guest users. The details of the S3 bucket adding earlier as well as the Cognito credentials are stored in your `./aws-exports` file which we have imported. 
+
+We have added an event listener to detect when a file is uploaded. Once the file is selected `Storage.put` will upload the image to the S3 bucket. Add the code from `app.js` and `index.html` in this repo to your code. Try uploading an image and if its successful you will see a 'Uploaded {imageName}' message on the webpage. Go to your S3 bucket in your AWS console to verify if the file has been uploaded. If there's an error, right click in your browser and click on `Inspect Element` to check what the error is. 
+
+### [Go to Part 3 of the workshop](https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_3)

@@ -227,4 +227,6 @@ Start command (npm run-script start)
 Do you want to use an AWS profile (Y)
 ```
 
-And that's it. You have created a simple Javascript web app using AWS Amplify. In the next steps you will learn how to let a user upload a file to a S3 bucket and then use Rekognition to detect labels on it.
+And that's it. You have created a simple Javascript web app using AWS Amplify. In the next steps you will learn how to let a user upload a file to a S3 bucket.
+
+### [Go to part 2 of the workshop](https://github.com/sohanmaheshwar/amplify-rekognition-workshop/tree/master/part_2)
