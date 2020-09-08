@@ -1,20 +1,15 @@
 import Amplify, { Storage } from 'aws-amplify';
 import awsconfig from './aws-exports';
 const AWS = require('aws-sdk');
-
-const region = 'ADD-REGION-HERE';
-const poolID = 'ADD-COGNITO-IDENTITY-POOL-ID-HERE';
+const bucket = awsconfig.aws_user_files_s3_bucket;
+const identity_pool_id = awsconfig.aws_cognito_identity_pool_id; 
 
 Amplify.configure(awsconfig);
 
-AWS.config.update({region: region});
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: poolID});
+AWS.config.update({region: 'us-east-1'});
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: identity_pool_id});
 
 const rek = new AWS.Rekognition();
-
-//const MutationButton = document.getElementById("MutationEventButton");
-const bucket = awsconfig.aws_user_files_s3_bucket;
-
 
 var fileTag = document.getElementById("myFile");
 fileTag.addEventListener("change", function() {
@@ -54,7 +49,7 @@ function identify (filename) {
 
         var labelArray = [];
         data.Labels.forEach(function(item) {
-          labelArray.push(item.Name + "<br>")
+          labelArray.push("<br>" + item.Name);
         })
 
         console.log(labelArray);
