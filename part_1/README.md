@@ -39,7 +39,7 @@ The open-source Amplify Framework provides the following products to build fulls
 
   
 
-1. Lets get started by installing Amplify
+1. #### Lets get started by installing Amplify
 
   
 
@@ -49,7 +49,7 @@ npm install -g @aws-amplify/cli
 
   
 
-2. Configure Amplify
+2. #### Configure Amplify
 
   
 
@@ -65,7 +65,7 @@ This command will ask you to create a new user in IAM. Follow the steps to creat
 
   
 
-3. Lets setup our simple project
+3. #### Lets setup our simple project
 
   
 

@@ -3,13 +3,10 @@
 
   
 
-  
 
-AWS Amplify comes with built-in support for Amazon S3 and its really easy.
+1. #### Add Storage via S3 to AWS Amplify
 
-  
-
-1. To do so just run the following command:
+AWS Amplify comes with built-in support for Amazon S3 and its really easy. To do so just run the following command:
 
   
 
@@ -47,7 +44,9 @@ Successfully updated auth resource locally.
 Successfully added resource imageStorage locally
 ```
 
-2. Now update your backend by running this command:
+2. #### Push changes to backend
+
+Now update your backend by running this command:
  
 ~~~
 amplify push
@@ -56,7 +55,9 @@ amplify push
 **To check if your backend added a S3 bucket check the `aws-exports.js` is copied under your source directory, e.g. ‘/src’ and see if there is a bucket name. You will also see credentials for Cognito**
 
 
-3. To give the users an option to upload a file using the browser we will use some simple JS and HTML. Edit your `index.html` file with the following code.
+3. #### Uploading a file
+
+To give the users an option to upload a file using the browser we will use some simple JS and HTML. Edit your `index.html` file with the following code.
 
   The code has some basic styling elements (not required) and a button to choose a local file.
 
@@ -92,7 +93,9 @@ amplify push
    </body>
 </html>
 ```
-4. We will now modify our `app.js` file to upload the selected image to a S3 bucket. In your `app.js` file, upload this code snippet:
+4. #### Upload image to S3
+
+We will now modify our `app.js` file to upload the selected image to a S3 bucket. In your `app.js` file, upload this code snippet:
 
 ```javascript
 import Amplify, {Storage} from 'aws-amplify';
