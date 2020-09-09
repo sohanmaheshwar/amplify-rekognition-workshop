@@ -73,7 +73,7 @@ This command will ask you to create a new user in IAM. Follow the steps to creat
 
   
 
-Create a new ‘plain’ JavaScript [ES2015](https://babeljs.io/docs/en/learn/) app with webpack. With the following commands, create the directory (`amplify-js-app`) and files for the app.
+Create a new ‘plain’ JavaScript [ES6](https://babeljs.io/docs/en/learn/) app with webpack. With the following commands, create the directory (`amplify-js-app`) and files for the app.
 
   
 

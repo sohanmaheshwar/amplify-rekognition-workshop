@@ -12,12 +12,12 @@ AWS.config.update({region: region});
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: identity_pool_id});
 
 
-var fileTag = document.getElementById("myFile");
-fileTag.addEventListener("change", function() {
+const fileTag = document.getElementById("myFile");
+  fileTag.addEventListener('change', () => {
     Storage.put(this.files[0].name, this.files[0])
     .then (result => {
-      var myDiv = document.getElementById("Labels");
-      myDiv.innerHTML = "Uploaded " + result.key;
+      let myDiv = document.getElementById("Labels");
+      myDiv.innerHTML = 'Uploaded ' + result.key;
     }) 
     .catch(err => console.log(err));
   });

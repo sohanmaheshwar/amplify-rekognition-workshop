@@ -13,8 +13,8 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({IdentityPoolId: ide
 
 const rek = new AWS.Rekognition();
 
-var fileTag = document.getElementById("myFile");
-fileTag.addEventListener("change", function() {
+const fileTag = document.getElementById("myFile");
+fileTag.addEventListener('change', () => {
     Storage.put(this.files[0].name, this.files[0])
     .then (result => {
         console.log(result);
@@ -49,13 +49,13 @@ function identify (filename) {
           return reject(new Error(err));
         }
 
-        var labelArray = [];
+        let labelArray = [];
         data.Labels.forEach(function(item) {
           labelArray.push("<br>" + item.Name);
         })
 
         console.log(labelArray);
-        var myDiv = document.getElementById("Labels");
+        let myDiv = document.getElementById("Labels");
         myDiv.innerHTML = labelArray;
         return resolve(data.Labels);
       });

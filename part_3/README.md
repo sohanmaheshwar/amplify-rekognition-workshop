@@ -14,7 +14,7 @@ We will use the AWS SDK which includes the Rekognition libraries.
 
 (sidenote: you can choose to upload a file to S3 via the AWS SDK as well and you don't **have** to use AWS Amplify to do so. We just did so for the purpose of the workshop)
 
-In your terminal enter `npm install aws-sdk`
+In your terminal enter `npm install aws-sdk --save`
 
 2. #### Adding Rekognition to the project
 
