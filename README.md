@@ -3,7 +3,7 @@
 
 Build a simple Hot Dog / Not Hot Dog detector using AWS Amplify, S3 and Rekognition. Yes, this is totally inspired by Jian Yang from Silicon Valley. You can build a image label detector with the same code. 
 
-![Imgur Image](https://imgur.com/a/lSEYm0j.gif)
+Here's an example - https://imgur.com/a/lSEYm0j.gif
 
 This workshop is a fun way for beginners to learn get introduced to AWS Amplify and Rekognition. 
 [Try the app for yourself](https://master.d165hsuggb16ya.amplifyapp.com/) 
