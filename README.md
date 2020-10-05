@@ -1,7 +1,12 @@
 
  # Getting started with AWS Amplify, S3 and Rekognition
 
- This is a simple portal that detects the labels in an image uploaded by the user. You can add a Hotdog Detector™ (like in Silicon Valley) too! This workshop is meant for beginners or people new to the cloud or to AWS Amplify. Try the app for yourself [link to be added soon!] 
+Build a simple Hot Dog / Not Hot Dog detector using AWS Amplify, S3 and Rekognition. Yes, this is totally inspired by Jian Yang from Silicon Valley. You can build a image label detector with the same code. 
+
+<img src = "https://imgur.com/a/lSEYm0j />
+
+This workshop is a fun way for beginners to learn get introduced to AWS Amplify and Rekognition. 
+[Try the app for yourself](https://master.d165hsuggb16ya.amplifyapp.com/) 
 
 #### Welcome to this workshop. In this self-paced workshop you will learn:
 
